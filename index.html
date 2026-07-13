@@ -4,254 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Üç Dogan - PUBG Mobile UC Store</title>
-    <!-- Tailwind CSS & Google Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #0b0e14;
-        }
-        .gaming-font {
-            font-family: 'Rajdhani', sans-serif;
-        }
-        .uc-glow {
-            box-shadow: 0 0 15px rgba(234, 179, 8, 0.1);
-        }
-        .uc-glow:hover {
-            box-shadow: 0 0 25px rgba(234, 179, 8, 0.35);
-        }
+        body { font-family: 'Roboto', sans-serif; background-color: #0b0e14; }
+        .gaming-font { font-family: 'Rajdhani', sans-serif; }
+        .uc-glow { box-shadow: 0 0 15px rgba(234, 179, 8, 0.1); transition: 0.3s; }
+        .uc-glow:hover { box-shadow: 0 0 25px rgba(234, 179, 8, 0.35); }
     </style>
 </head>
-<body class="text-gray-100 min-h-screen flex flex-col justify-between selection:bg-yellow-500 selection:text-black">
+<body class="text-gray-100 min-h-screen flex flex-col justify-between">
 
-    <!-- Header / Logo bölümi -->
+    <!-- Header -->
     <header class="border-b border-gray-800 bg-gray-950/80 backdrop-blur sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <span class="text-2xl md:text-3xl font-extrabold tracking-wider gaming-font text-yellow-500">
-                    <i class="fa-solid fa-gamepad mr-2 text-yellow-400"></i>ÜÇ DOGAN <span class="text-white">STORE</span>
-                </span>
-            </div>
-            <!-- Hamanchik Hyzmatdaşy ýazgysy -->
-            <div class="flex items-center space-x-2 bg-yellow-500/10 border border-yellow-500/20 px-3 py-1.5 rounded-full text-xs md:text-sm font-semibold text-yellow-500">
+            <span class="text-2xl font-extrabold tracking-wider gaming-font text-yellow-500">
+                <i class="fa-solid fa-gamepad mr-2 text-yellow-400"></i>ÜÇ DOGAN <span class="text-white">STORE</span>
+            </span>
+            <div class="flex items-center space-x-2 bg-yellow-500/10 border border-yellow-500/20 px-3 py-1.5 rounded-full text-xs font-semibold text-yellow-500">
                 <span class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse mr-1"></span> 
                 Hamanchik Hyzmatdaşy
             </div>
         </div>
     </header>
 
-    <!-- Esasy Bölüm -->
     <main class="max-w-6xl mx-auto px-4 py-8 w-full flex-grow">
-        
-        <!-- Player ID Girizmek bölümi -->
+        <!-- Player ID -->
         <section class="mb-10 bg-gray-900/50 border border-gray-800 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
-            <h2 class="text-xl md:text-2xl font-bold mb-4 gaming-font text-yellow-400 flex items-center">
+            <h2 class="text-xl font-bold mb-4 gaming-font text-yellow-400 flex items-center">
                 <span class="bg-yellow-500 text-black px-2.5 py-0.5 rounded-md mr-3 text-sm">1</span> PUBG Player ID Giriziň
             </h2>
             <div class="max-w-md">
-                <div class="relative">
-                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
-                        <i class="fa-solid fa-user-astronaut text-lg"></i>
-                    </span>
-                    <input type="text" id="playerId" placeholder="Mysaly: 512345678" 
-                        class="w-full pl-10 pr-4 py-3 bg-black/40 border border-gray-700 rounded-xl focus:border-yellow-500 focus:outline-none focus:ring-1 focus:ring-yellow-500 text-white tracking-widest placeholder-gray-500 transition-all">
-                </div>
-                <p class="text-xs text-gray-500 mt-2">Hanyňyza UC ugradylmagy üçin ID belgiňizi dogry girizendigiňizden ynamly boluň.</p>
+                <input type="text" id="playerId" placeholder="Mysaly: 512345678" 
+                    class="w-full px-4 py-3 bg-black/40 border border-gray-700 rounded-xl focus:border-yellow-500 focus:outline-none text-white tracking-widest transition-all">
+                <p class="text-xs text-gray-500 mt-2">Hasabyňyza UC ugradylmagy üçin ID belgiňizi dogry girizendigiňizden ynamly boluň.</p>
             </div>
         </section>
 
-        <!-- UC Paketleri bölümi -->
+        <!-- UC Paketleri -->
         <section class="mb-10">
-            <h2 class="text-xl md:text-2xl font-bold mb-6 gaming-font text-yellow-400 flex items-center">
+            <h2 class="text-xl font-bold mb-6 gaming-font text-yellow-400 flex items-center">
                 <span class="bg-yellow-500 text-black px-2.5 py-0.5 rounded-md mr-3 text-sm">2</span> UC Paketini Saýlaň
             </h2>
-
-            <!-- Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6" id="ucGrid">
-                <!-- Paketler JavaScript tarapyndan awtomatik döküler -->
-            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="ucGrid"></div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-950 border-t border-gray-800 py-8 text-center text-sm text-gray-500">
-        <div class="max-w-6xl mx-auto px-4">
-            <p class="mb-2">© 2026 Üç Dogan Store. Ähli hukuklar goralan.</p>
-            <p class="text-xs">Bu platforma PUBG Mobile resmi hyzmatdaşlygy esasynda amala aşyrylýar.</p>
+    <footer class="bg-gray-950 border-t border-gray-800 py-10">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <!-- Sosyal Media -->
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="#" class="text-gray-400 hover:text-yellow-500 text-2xl transition"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#" class="text-gray-400 hover:text-yellow-500 text-2xl transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-yellow-500 text-2xl transition"><i class="fa-brands fa-telegram"></i></a>
+            </div>
+            <p class="text-xs text-gray-600 uppercase tracking-widest">© 2026 ÜÇ DOGAN STORE - Ähli hukuklar goralan</p>
+            <p class="text-[10px] text-gray-700 mt-2">PUBG Mobile resmi däl, garaşsyz UC satuw platformasy.</p>
         </div>
     </footer>
 
-    <!-- Satyn Almak Modaly (Popup) -->
+    <!-- Modals (Gyzyl/Custom) -->
     <div id="paymentModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
-        <div class="bg-gray-900 border border-gray-800 w-full max-w-md rounded-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-lg font-bold gaming-font text-yellow-400">Sargyt Maglumaty</h3>
-                    <button onclick="closeModal()" class="text-gray-400 hover:text-white transition-all text-xl">&times;</button>
-                </div>
-                <hr class="border-gray-800 mb-4">
-                
-                <div class="space-y-3 mb-6">
-                    <div class="flex justify-between">
-                        <span class="text-gray-400">Player ID:</span>
-                        <span id="modalPlayerId" class="font-mono text-yellow-500 font-bold"></span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-400">Saýlanan Paket:</span>
-                        <span id="modalUcAmount" class="font-bold text-white"></span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-gray-400">Jemi Töleg:</span>
-                        <span id="modalPrice" class="text-xl font-bold text-yellow-400"></span>
-                    </div>
-                </div>
-
-                <div class="bg-yellow-500/10 border border-yellow-500/20 p-3 rounded-xl text-xs text-yellow-500/90 mb-6 flex items-start space-x-2">
-                    <i class="fa-solid fa-circle-info mt-0.5"></i>
-                    <span>Töleg amala aşyrmak üçin operatora ugrukdyrylarsyňyz. Siziň sargydyňyz we ID maglumatyňyz awtomatik ýollanar.</span>
-                </div>
-
-                <button onclick="redirectToWhatsApp()" class="w-full py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl flex items-center justify-center space-x-2 transition-all shadow-lg shadow-green-900/20">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>WhatsApp arkaly Töle</span>
-                </button>
+        <div class="bg-gray-900 border border-gray-800 w-full max-w-sm rounded-2xl p-6">
+            <h3 class="text-lg font-bold text-yellow-400 mb-4">Sargyt Maglumaty</h3>
+            <div class="space-y-3 mb-6 text-sm">
+                <div class="flex justify-between text-gray-400"><span>Player ID:</span> <span id="modalPlayerId" class="text-white font-bold"></span></div>
+                <div class="flex justify-between text-gray-400"><span>Paket:</span> <span id="modalUcAmount" class="text-white"></span></div>
+                <div class="flex justify-between text-gray-400"><span>Baha:</span> <span id="modalPrice" class="text-yellow-500 font-bold text-lg"></span></div>
             </div>
+            <button onclick="redirectToWhatsApp()" class="w-full py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl transition-all">WhatsApp arkaly Töle</button>
         </div>
     </div>
 
-    <!-- TÄZE: Ýörite duýduryş gutyjygy (Custom Alert Modal) -->
-    <div id="errorModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
-        <div class="bg-gray-900 border border-red-500/50 w-full max-w-sm rounded-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 p-6 text-center">
-            <div class="w-14 h-14 bg-red-500/10 text-red-500 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-            </div>
-            <h3 class="text-lg font-bold gaming-font text-white mb-1">Üns Beriň!</h3>
-            <p class="text-gray-400 text-sm mb-6" id="errorMessage">Sargyt etmek üçin ilki bilen Player ID girizmeli!</p>
-            <button onclick="closeErrorModal()" class="w-full py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition-all shadow-md">
-                Ýap
-            </button>
-        </div>
-    </div>
-
-    <!-- JavaScript programmirleme logikasy -->
     <script>
         const ucPackages = [
-            { uc: 30, bonus: 0, price: 30.99, popular: false },
-            { uc: 60, bonus: 0, price: 51.99, popular: true },
-            { uc: 300, bonus: 25, price: 219.99, popular: false },
-            { uc: 600, bonus: 60, price: 429.99, popular: true },
-            { uc: 1500, bonus: 300, price: 1059.99, popular: false },
-            { uc: 3000, bonus: 850, price: 2109.99, popular: false },
-            { uc: 6000, bonus: 2100, price: 4209.99, popular: false },
-            { uc: 12000, bonus: 4200, price: 8409.99, popular: false },
-            { uc: 18000, bonus: 6300, price: 12609.99, popular: false },
-            { uc: 24000, bonus: 8400, price: 16809.99, popular: false },
-            { uc: 30000, bonus: 10500, price: 21009.99, popular: false },
-            { uc: 36000, bonus: 12600, price: 25209.99, popular: false },
-            { uc: 60000, bonus: 21000, price: 42009.99, popular: false }
+            { uc: 30, bonus: 0, price: 30.99 }, { uc: 60, bonus: 0, price: 51.99 },
+            { uc: 300, bonus: 25, price: 219.99 }, { uc: 600, bonus: 60, price: 429.99 },
+            { uc: 1500, bonus: 300, price: 1059.99 }, { uc: 3000, bonus: 850, price: 2109.99 },
+            { uc: 6000, bonus: 2100, price: 4209.99 }, { uc: 12000, bonus: 4200, price: 8409.99 }
         ];
 
-        let selectedPackage = null;
-
-        // Paketleri sahypada renderlemek
         function renderPackages() {
             const grid = document.getElementById('ucGrid');
-            grid.innerHTML = '';
-
             ucPackages.forEach(pkg => {
-                const totalUc = pkg.uc + pkg.bonus;
-                const bonusText = pkg.bonus > 0 ? `+${pkg.bonus}` : '';
-                
                 const card = document.createElement('div');
-                card.className = `relative bg-gray-900/60 border ${pkg.popular ? 'border-yellow-500/50' : 'border-gray-800'} rounded-2xl p-5 flex flex-col justify-between items-center text-center cursor-pointer transition-all duration-300 transform hover:-translate-y-1 uc-glow`;
-                
+                card.className = "bg-gray-900/60 border border-gray-800 rounded-2xl p-5 text-center cursor-pointer uc-glow hover:border-yellow-500/50";
                 card.onclick = () => selectPackage(pkg);
-
                 card.innerHTML = `
-                    ${pkg.popular ? '<span class="absolute -top-2.5 left-4 bg-yellow-500 text-black text-xs font-bold px-2 py-0.5 rounded-md uppercase tracking-wider gaming-font">Meşhur</span>' : ''}
-                    
-                    <!-- UC Ikon we Mukdar -->
-                    <div class="mb-4 mt-2">
-                        <div class="w-14 h-14 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center text-black font-extrabold text-2xl shadow-lg shadow-yellow-500/10 mx-auto">
-                            UC
-                        </div>
-                    </div>
-
-                    <!-- Mukdar we Bonus -->
-                    <div class="mb-4">
-                        <div class="text-xl font-bold tracking-wide text-white gaming-font">
-                            ${pkg.uc} ${bonusText ? `<span class="text-yellow-400 ml-1">${bonusText}</span>` : ''}
-                        </div>
-                        <div class="text-xs text-gray-500 mt-0.5">PUBG Mobile UC</div>
-                    </div>
-
-                    <!-- Baha -->
-                    <div class="w-full pt-3 border-t border-gray-800">
-                        <div class="text-lg font-bold text-yellow-400 gaming-font">${pkg.price.toLocaleString('tr-TR', { minimumFractionDigits: 2 })} TL</div>
-                    </div>
+                    <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center text-yellow-500 text-lg font-bold mx-auto mb-3">UC</div>
+                    <div class="font-bold text-lg text-white">${pkg.uc} ${pkg.bonus ? '+' + pkg.bonus : ''}</div>
+                    <div class="text-yellow-400 font-bold mt-2">${pkg.price.toFixed(2)} TL</div>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        // Özbaşdak duýduryşy (custom alert) görkezmek
-        function showCustomAlert(message) {
-            document.getElementById('errorMessage').innerText = message;
-            document.getElementById('errorModal').classList.remove('hidden');
-        }
-
-        // Ýörite duýduryş modalyny ýapmak
-        function closeErrorModal() {
-            document.getElementById('errorModal').classList.add('hidden');
-        }
-
-        // Paket saýlananda modal açmak
         function selectPackage(pkg) {
             const idInput = document.getElementById('playerId').value.trim();
-            
-            if (!idInput) {
-                // Indi brauzeriň alert() funksiyasy däl-de, öz dizaýnymyz açylýar!
-                showCustomAlert('Sargyt etmek üçin ilki bilen Player ID girizmeli!');
-                document.getElementById('playerId').focus();
-                return;
-            }
-
-            selectedPackage = pkg;
+            if (!idInput) { alert('Sargyt etmek üçin ilki bilen Player ID girizmeli!'); return; }
             document.getElementById('modalPlayerId').innerText = idInput;
-            document.getElementById('modalUcAmount').innerText = `${pkg.uc} ${pkg.bonus > 0 ? '+ ' + pkg.bonus : ''} UC`;
-            document.getElementById('modalPrice').innerText = `${pkg.price.toLocaleString('tr-TR', { minimumFractionDigits: 2 })} TL`;
-            
+            document.getElementById('modalUcAmount').innerText = pkg.uc + " UC";
+            document.getElementById('modalPrice').innerText = pkg.price.toFixed(2) + " TL";
             document.getElementById('paymentModal').classList.remove('hidden');
         }
 
-        // Modaly ýapmak
-        function closeModal() {
-            document.getElementById('paymentModal').classList.add('hidden');
-            selectedPackage = null;
-        }
-
-        // WhatsApp-a ugrukdyrmak
         function redirectToWhatsApp() {
-            const idInput = document.getElementById('playerId').value.trim();
-            // Bu ýere öz telefon belgiňizi giriziň (Meselem: 905XXXXXXXXX)
-            const adminPhoneNumber = "905051234567"; 
-            
-            const text = `Salam, men PUBG UC satyn almak isleýän!\n\n` + 
-                         `👤 Player ID: ${idInput}\n` + 
-                         `💎 Saýlanan Paket: ${selectedPackage.uc} ${selectedPackage.bonus > 0 ? '+ ' + selectedPackage.bonus : ''} UC\n` + 
-                         `💰 Jemi Baha: ${selectedPackage.price.toFixed(2)} TL\n\n` +
-                         `Töleg maglumatlaryny ugratmagyňyza garaşýaryn!`;
-
-            const encodedText = encodeURIComponent(text);
-            window.open(`https://wa.me/${adminPhoneNumber}?text=${encodedText}`, '_blank');
-            closeModal();
+            const adminPhone = "905528543001"; // Seniň WhatsApp belgiň
+            const text = `Salam, men PUBG UC satyn almak isleýän! Player ID: ${document.getElementById('playerId').value}`;
+            window.open(`https://wa.me/${adminPhone}?text=${encodeURIComponent(text)}`, '_blank');
+            document.getElementById('paymentModal').classList.add('hidden');
         }
 
-        // Ilkinji işe girizme
         renderPackages();
     </script>
 </body>
