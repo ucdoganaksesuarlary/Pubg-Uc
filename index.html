@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Üç Dogan - PUBG Mobile UC Store</title>
+    <!-- Tailwind CSS & Google Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -26,6 +28,7 @@
 </head>
 <body class="text-gray-100 min-h-screen flex flex-col justify-between selection:bg-yellow-500 selection:text-black">
 
+    <!-- Header / Logo bölümi -->
     <header class="border-b border-gray-800 bg-gray-950/80 backdrop-blur sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
@@ -33,15 +36,18 @@
                     <i class="fa-solid fa-gamepad mr-2 text-yellow-400"></i>ÜÇ DOGAN <span class="text-white">STORE</span>
                 </span>
             </div>
+            <!-- Hamanchik Hyzmatdaşy ýazgysy -->
             <div class="flex items-center space-x-2 bg-yellow-500/10 border border-yellow-500/20 px-3 py-1.5 rounded-full text-xs md:text-sm font-semibold text-yellow-500">
                 <span class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse mr-1"></span> 
-                Midasbuy Hyzmatdaşy
+                Hamanchik Hyzmatdaşy
             </div>
         </div>
     </header>
 
+    <!-- Esasy Bölüm -->
     <main class="max-w-6xl mx-auto px-4 py-8 w-full flex-grow">
         
+        <!-- Player ID Girizmek bölümi -->
         <section class="mb-10 bg-gray-900/50 border border-gray-800 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
             <h2 class="text-xl md:text-2xl font-bold mb-4 gaming-font text-yellow-400 flex items-center">
                 <span class="bg-yellow-500 text-black px-2.5 py-0.5 rounded-md mr-3 text-sm">1</span> PUBG Player ID Giriziň
@@ -58,16 +64,20 @@
             </div>
         </section>
 
+        <!-- UC Paketleri bölümi -->
         <section class="mb-10">
             <h2 class="text-xl md:text-2xl font-bold mb-6 gaming-font text-yellow-400 flex items-center">
                 <span class="bg-yellow-500 text-black px-2.5 py-0.5 rounded-md mr-3 text-sm">2</span> UC Paketini Saýlaň
             </h2>
 
+            <!-- Grid -->
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6" id="ucGrid">
-                </div>
+                <!-- Paketler JavaScript tarapyndan awtomatik döküler -->
+            </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-gray-950 border-t border-gray-800 py-8 text-center text-sm text-gray-500">
         <div class="max-w-6xl mx-auto px-4">
             <p class="mb-2">© 2026 Üç Dogan Store. Ähli hukuklar goralan.</p>
@@ -75,6 +85,7 @@
         </div>
     </footer>
 
+    <!-- Satyn Almak Modaly (Popup) -->
     <div id="paymentModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
         <div class="bg-gray-900 border border-gray-800 w-full max-w-md rounded-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             <div class="p-6">
@@ -112,8 +123,22 @@
         </div>
     </div>
 
+    <!-- TÄZE: Ýörite duýduryş gutyjygy (Custom Alert Modal) -->
+    <div id="errorModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-gray-900 border border-red-500/50 w-full max-w-sm rounded-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 p-6 text-center">
+            <div class="w-14 h-14 bg-red-500/10 text-red-500 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h3 class="text-lg font-bold gaming-font text-white mb-1">Üns Beriň!</h3>
+            <p class="text-gray-400 text-sm mb-6" id="errorMessage">Sargyt etmek üçin ilki bilen Player ID girizmeli!</p>
+            <button onclick="closeErrorModal()" class="w-full py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition-all shadow-md">
+                Ýap
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript programmirleme logikasy -->
     <script>
-        // Suratlaryňyz esasynda 10 TL goşulan täze bahalar
         const ucPackages = [
             { uc: 30, bonus: 0, price: 30.99, popular: false },
             { uc: 60, bonus: 0, price: 51.99, popular: true },
@@ -149,13 +174,14 @@
                 card.innerHTML = `
                     ${pkg.popular ? '<span class="absolute -top-2.5 left-4 bg-yellow-500 text-black text-xs font-bold px-2 py-0.5 rounded-md uppercase tracking-wider gaming-font">Meşhur</span>' : ''}
                     
+                    <!-- UC Ikon we Mukdar -->
                     <div class="mb-4 mt-2">
-                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=150" alt="UC Icon" class="w-16 h-16 object-contain hidden opacity-0">
                         <div class="w-14 h-14 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center text-black font-extrabold text-2xl shadow-lg shadow-yellow-500/10 mx-auto">
                             UC
                         </div>
                     </div>
 
+                    <!-- Mukdar we Bonus -->
                     <div class="mb-4">
                         <div class="text-xl font-bold tracking-wide text-white gaming-font">
                             ${pkg.uc} ${bonusText ? `<span class="text-yellow-400 ml-1">${bonusText}</span>` : ''}
@@ -163,6 +189,7 @@
                         <div class="text-xs text-gray-500 mt-0.5">PUBG Mobile UC</div>
                     </div>
 
+                    <!-- Baha -->
                     <div class="w-full pt-3 border-t border-gray-800">
                         <div class="text-lg font-bold text-yellow-400 gaming-font">${pkg.price.toLocaleString('tr-TR', { minimumFractionDigits: 2 })} TL</div>
                     </div>
@@ -171,12 +198,24 @@
             });
         }
 
+        // Özbaşdak duýduryşy (custom alert) görkezmek
+        function showCustomAlert(message) {
+            document.getElementById('errorMessage').innerText = message;
+            document.getElementById('errorModal').classList.remove('hidden');
+        }
+
+        // Ýörite duýduryş modalyny ýapmak
+        function closeErrorModal() {
+            document.getElementById('errorModal').classList.add('hidden');
+        }
+
         // Paket saýlananda modal açmak
         function selectPackage(pkg) {
             const idInput = document.getElementById('playerId').value.trim();
             
             if (!idInput) {
-                alert('Sargyt etmek üçin ilki bilen Player ID girizmeli!');
+                // Indi brauzeriň alert() funksiyasy däl-de, öz dizaýnymyz açylýar!
+                showCustomAlert('Sargyt etmek üçin ilki bilen Player ID girizmeli!');
                 document.getElementById('playerId').focus();
                 return;
             }
@@ -195,13 +234,12 @@
             selectedPackage = null;
         }
 
-        // WhatsApp-a ugrukdyrmak (Töleg amala aşyrmak we sargyt maglumaty ýollamak)
+        // WhatsApp-a ugrukdyrmak
         function redirectToWhatsApp() {
             const idInput = document.getElementById('playerId').value.trim();
-            // Bu ýerde öz Telefon belgiňizi giriziň (+ yzyndan ýazmaly)
-            const adminPhoneNumber = "905XXXXXXXXX"; 
+            // Bu ýere öz telefon belgiňizi giriziň (Meselem: 905XXXXXXXXX)
+            const adminPhoneNumber = "905051234567"; 
             
-            const totalUc = selectedPackage.uc + selectedPackage.bonus;
             const text = `Salam, men PUBG UC satyn almak isleýän!\n\n` + 
                          `👤 Player ID: ${idInput}\n` + 
                          `💎 Saýlanan Paket: ${selectedPackage.uc} ${selectedPackage.bonus > 0 ? '+ ' + selectedPackage.bonus : ''} UC\n` + 
@@ -218,4 +256,3 @@
     </script>
 </body>
 </html>
-
