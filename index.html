@@ -41,9 +41,10 @@
 </head>
 <body class="text-gray-100 min-h-screen flex flex-col justify-between selection:bg-yellow-500 selection:text-black">
 
-    <!-- AVTOMATIKI STATUS BARLAÝJY (DEBUG) -->
-    <div id="js-debug-status" class="bg-red-600 text-white text-center py-2 text-xs font-bold transition-all z-50 sticky top-0">
-        <i class="fa-solid fa-triangle-exclamation mr-1.5 animate-bounce"></i> KÖNE KOD WORK: Brauzer täze kody entek okap bilenok! (Keşi arassalaň ýa-da inkognito açyň)
+    <!-- AVTOMATIKI STATUS WE ERROR BARLAÝJY (DEBUG PANEL) -->
+    <div id="js-debug-status" class="bg-red-600 text-white text-center py-2.5 text-xs font-bold transition-all z-50 sticky top-0 px-4">
+        <i class="fa-solid fa-triangle-exclamation mr-1.5 animate-bounce"></i> 
+        <span id="debug-text">KÖNE KOD WORK: Brauzer täze JavaScript kody entek okap bilenok! (Keşi arassalaň)</span>
     </div>
 
     <!-- Header -->
@@ -246,22 +247,10 @@
         </div>
     </div>
 
-    <!-- JavaScript programmirleme logikasy (100% GARANTIÝALY IŞJEŇLIK) -->
+    <!-- TÄZE BUILT-IN ERROR RECOVERY JAVASCRIPT -->
     <script>
-        // BÜTIN PROGRAMMANYŇ ESASY FUNKSIÝASY
-        function startApp() {
-            
-            // 1. Ýokardaky Debug Bar-y wezipesini gutardygy üçin "Ýaşyl" edeli we ýapaly
-            const debugBar = document.getElementById('js-debug-status');
-            if (debugBar) {
-                debugBar.className = "bg-green-600 text-white text-center py-2 text-xs font-bold transition-all z-50 sticky top-0";
-                debugBar.innerHTML = `<i class="fa-solid fa-circle-check mr-1.5"></i> SAÝT KODY DOLY TÄZELENDI! (Hemme zat 100% işjeň)`;
-                setTimeout(() => {
-                    debugBar.style.display = 'none';
-                }, 4000);
-            }
-
-            // 13 SANY PAKET
+        // Ählisini 'try-catch' içine salýarys, ýalňyşlyk tapsa göni ekrana gyzyl ýazgy edip ýazsyn!
+        try {
             const ucPackages = [
                 { uc: 30, bonus: 0, price: 30.99, popular: false },
                 { uc: 60, bonus: 0, price: 51.99, popular: true },
@@ -333,4 +322,12 @@
                     txtSupport: "24/7 Destek",
                     txtRights: "© 2026 ÜÇ DOGAN STORE - TÜM HAKLARI SAKLIDIR",
                     txtSubDesc: "Bu site Hamanchik ortaklığında çalışan bağımsız ve güvenli bir UC satış platformudur.",
-                    mod
+                    modalTitle: "Sipariş Bilgileri",
+                    lblSelectedPkg: "Seçilen Paket:",
+                    lblTotalPay: "Toplam Ödeme:",
+                    lblModalInfo: "Ödeme yapmak ve onaylatmak için şimdi operatörümüze yönlendirileceksiniz.",
+                    btnPayText: "WhatsApp ile Öde",
+                    errTitle: "Dikkat!",
+                    errClose: "Kapat",
+                    errNoId: "Sipariş vermek için önce Oyuncu ID girmelisiniz!",
+                    errNotVerified: "Sipariş vermeden önce girilen ID numaranızı 'ID Sorgula' butonu ile doğ
