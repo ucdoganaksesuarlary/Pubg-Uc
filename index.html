@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Üç Dogan - PUBG Mobile UC Store</title>
-    <!-- Tailwind CSS & Google Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght=500;600;700&family=Roboto:wght=400;500;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -41,7 +39,6 @@
 </head>
 <body class="text-gray-100 min-h-screen flex flex-col justify-between selection:bg-yellow-500 selection:text-black">
 
-    <!-- Header -->
     <header class="border-b border-gray-800 bg-gray-950/80 backdrop-blur sticky top-0 z-40">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
@@ -51,14 +48,12 @@
             </div>
             
             <div class="flex items-center space-x-3">
-                <!-- Hamanchik Hyzmatdaşy -->
                 <div class="hidden sm:flex items-center space-x-2 bg-yellow-500/10 border border-yellow-500/20 px-3 py-1.5 rounded-full text-xs font-semibold text-yellow-500">
                     <span class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse mr-1"></span> 
                     <span id="partnerText">Hamanchik Hyzmatdaşy</span>
                 </div>
                 
-                <!-- Dil Saýlama Düwmesi -->
-                <button onclick="toggleLanguage()" class="flex items-center space-x-1.5 bg-gray-900 border border-gray-800 hover:border-yellow-500/50 px-3 py-1.5 rounded-xl text-xs font-bold transition-all">
+                <button onclick="window.toggleLanguage()" class="flex items-center space-x-1.5 bg-gray-900 border border-gray-800 hover:border-yellow-500/50 px-3 py-1.5 rounded-xl text-xs font-bold transition-all">
                     <i class="fa-solid fa-globe text-yellow-500"></i>
                     <span id="langBtn">TR</span>
                 </button>
@@ -66,10 +61,8 @@
         </div>
     </header>
 
-    <!-- Esasy Bölüm -->
     <main class="max-w-6xl mx-auto px-4 py-8 w-full flex-grow">
         
-        <!-- Player ID Girizmek we Barlamak -->
         <section class="mb-10 bg-gray-900/50 border border-gray-800 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
             <h2 class="text-xl md:text-2xl font-bold mb-4 gaming-font text-yellow-400 flex items-center">
                 <span class="bg-yellow-500 text-black px-2.5 py-0.5 rounded-md mr-3 text-sm">1</span> 
@@ -84,37 +77,30 @@
                         <input type="text" id="playerId" placeholder="Mysaly: 512345678" 
                             class="w-full pl-10 pr-4 py-3 bg-black/40 border border-gray-700 rounded-xl focus:border-yellow-500 focus:outline-none focus:ring-1 focus:ring-yellow-500 text-white tracking-widest placeholder-gray-500 transition-all">
                     </div>
-                    <!-- ID Barla düwmesi -->
-                    <button onclick="verifyPlayerId()" id="verifyBtn" class="px-6 py-3 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-xl transition-all flex items-center justify-center space-x-2">
+                    <button onclick="window.verifyPlayerId()" id="verifyBtn" class="px-6 py-3 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-xl transition-all flex items-center justify-center space-x-2">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <span id="btnVerifyText">ID Barla</span>
                     </button>
                 </div>
-                <!-- Barlag netijesi -->
                 <div id="verifyStatus" class="mt-2.5 text-xs font-semibold hidden"></div>
                 <p class="text-xs text-gray-500 mt-2.5" id="txtIdDesc">Hasabyňyza UC ugradylmagy üçin ID belgiňizi dogry girizendigiňizden ynamly boluň.</p>
             </div>
         </section>
 
-        <!-- UC Paketleri -->
         <section class="mb-10">
             <h2 class="text-xl md:text-2xl font-bold mb-6 gaming-font text-yellow-400 flex items-center">
                 <span class="bg-yellow-500 text-black px-2.5 py-0.5 rounded-md mr-3 text-sm">2</span> 
                 <span id="txtStep2">UC Paketini Saýlaň</span>
             </h2>
 
-            <!-- Grid (Ähli 13 sany paket bärde dökülýär) -->
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6" id="ucGrid">
-                <!-- JavaScript tarapyndan dökülýär -->
-            </div>
+                </div>
         </section>
 
-        <!-- Köp Soralýan Soraglar (FAQ Accordion) -->
         <section class="mb-10 bg-gray-900/30 border border-gray-800 rounded-2xl p-6">
             <h2 class="text-xl md:text-2xl font-bold mb-6 gaming-font text-yellow-400" id="faqTitle">Köp Soralýan Soraglar</h2>
             <div class="space-y-4">
-                <!-- Sorag 1 -->
-                <div class="border border-gray-800 rounded-xl bg-gray-900/50 transition-all" onclick="toggleFaq(this)">
+                <div class="border border-gray-800 rounded-xl bg-gray-900/50 transition-all" onclick="window.toggleFaq(this)">
                     <div class="p-4 flex justify-between items-center cursor-pointer">
                         <span class="font-bold text-sm md:text-base text-white" id="faqQ1">UC näçe wagtda hasaba gelýär?</span>
                         <i class="fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
@@ -123,8 +109,7 @@
                         <p class="p-4 pt-0 text-sm text-gray-400 border-t border-gray-800/50" id="faqA1">Töleg amala aşyrylandan soň 5-15 minudyň içinde UC hasabyňyza geçirilýär.</p>
                     </div>
                 </div>
-                <!-- Sorag 2 -->
-                <div class="border border-gray-800 rounded-xl bg-gray-900/50 transition-all" onclick="toggleFaq(this)">
+                <div class="border border-gray-800 rounded-xl bg-gray-900/50 transition-all" onclick="window.toggleFaq(this)">
                     <div class="p-4 flex justify-between items-center cursor-pointer">
                         <span class="font-bold text-sm md:text-base text-white" id="faqQ2">Töleg nähili kabul edilýär?</span>
                         <i class="fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
@@ -133,8 +118,7 @@
                         <p class="p-4 pt-0 text-sm text-gray-400 border-t border-gray-800/50" id="faqA2">WhatsApp arkaly operatorymyz bilen habarlaşyp, Türkiýe we beýleki bank kartlary arkaly töleg edip bilersiňiz.</p>
                     </div>
                 </div>
-                <!-- Sorag 3 -->
-                <div class="border border-gray-800 rounded-xl bg-gray-900/50 transition-all" onclick="toggleFaq(this)">
+                <div class="border border-gray-800 rounded-xl bg-gray-900/50 transition-all" onclick="window.toggleFaq(this)">
                     <div class="p-4 flex justify-between items-center cursor-pointer">
                         <span class="font-bold text-sm md:text-base text-white" id="faqQ3">Hasabymyň ban edilme howpy barmy?</span>
                         <i class="fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
@@ -148,11 +132,9 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-950 border-t border-gray-800 py-10">
         <div class="max-w-6xl mx-auto px-4 text-center">
             
-            <!-- Sosial Ulgamlar -->
             <div class="flex justify-center space-x-6 mb-6">
                 <a href="#" target="_blank" class="w-12 h-12 bg-gray-900 border border-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-yellow-500 hover:border-yellow-500/50 transition duration-300">
                     <i class="fa-brands fa-tiktok text-xl"></i>
@@ -165,7 +147,6 @@
                 </a>
             </div>
 
-            <!-- Gorag we Kepillik nyşanlary -->
             <div class="flex flex-wrap justify-center items-center gap-6 mb-6 text-xs text-gray-500">
                 <span class="flex items-center" id="txtSecPay"><i class="fa-solid fa-shield-halved text-green-500 mr-1.5 text-sm"></i> 100% Ygtybarly töleg</span>
                 <span class="flex items-center" id="txtFastDel"><i class="fa-solid fa-bolt text-yellow-500 mr-1.5 text-sm"></i> Dessine ugradylşyk</span>
@@ -179,13 +160,12 @@
         </div>
     </footer>
 
-    <!-- Satyn Almak Modaly -->
     <div id="paymentModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
         <div class="bg-gray-900 border border-gray-800 w-full max-w-md rounded-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             <div class="p-6">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-lg font-bold gaming-font text-yellow-400" id="modalTitle">Sargyt Maglumaty</h3>
-                    <button onclick="closeModal()" class="text-gray-400 hover:text-white transition-all text-xl">&times;</button>
+                    <button onclick="window.closeModal()" class="text-gray-400 hover:text-white transition-all text-xl">&times;</button>
                 </div>
                 <hr class="border-gray-800 mb-4">
                 
@@ -209,7 +189,7 @@
                     <span id="lblModalInfo">Töleg amala aşyrmak we tassyklatmak üçin häzir operatorymyza ugrukdyrylarsyňyz.</span>
                 </div>
 
-                <button onclick="redirectToWhatsApp()" class="w-full py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl flex items-center justify-center space-x-2 transition-all shadow-lg shadow-green-900/20">
+                <button onclick="window.redirectToWhatsApp()" class="w-full py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl flex items-center justify-center space-x-2 transition-all shadow-lg shadow-green-900/20">
                     <i class="fa-brands fa-whatsapp text-lg"></i>
                     <span id="btnPayText">WhatsApp arkaly Töle</span>
                 </button>
@@ -217,7 +197,6 @@
         </div>
     </div>
 
-    <!-- Ýörite duýduryş gutyjygy (Error Modal) -->
     <div id="errorModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
         <div class="bg-gray-900 border border-red-500/50 w-full max-w-sm rounded-2xl overflow-hidden p-6 text-center">
             <div class="w-14 h-14 bg-red-500/10 text-red-500 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
@@ -225,13 +204,12 @@
             </div>
             <h3 class="text-lg font-bold gaming-font text-white mb-1" id="errTitle">Üns Beriň!</h3>
             <p class="text-gray-400 text-sm mb-6" id="errorMessage">Sargyt etmek üçin ilki bilen Player ID girizmeli!</p>
-            <button onclick="closeErrorModal()" class="w-full py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition-all" id="errClose">
+            <button onclick="window.closeErrorModal()" class="w-full py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition-all" id="errClose">
                 Ýap
             </button>
         </div>
     </div>
 
-    <!-- Janly sargytlar bildirişi (Live Orders Toast) -->
     <div id="liveOrderToast" class="fixed bottom-6 left-6 z-50 max-w-sm bg-gray-950/90 border border-yellow-500/30 rounded-2xl p-4 flex items-center space-x-3 shadow-2xl transition-all duration-500 transform translate-y-20 opacity-0">
         <div class="w-10 h-10 bg-yellow-500/20 text-yellow-400 rounded-full flex items-center justify-center text-lg">
             <i class="fa-solid fa-fire animate-pulse"></i>
@@ -242,7 +220,6 @@
         </div>
     </div>
 
-    <!-- JavaScript programmirleme logikasy -->
     <script>
         // ÄHLI 13 PAKET (+10 TL goşulan döküm)
         const ucPackages = [
@@ -332,4 +309,20 @@
                 faqQ2: "Ödeme nasıl yapılıyor?",
                 faqA2: "WhatsApp üzerinden operatörümüzle görüşerek Türkiye banka kartları ve diğer yöntemlerle ödeme yapabilirsiniz.",
                 faqQ3: "Hesabımın ban yeme riski var mı?",
-                faqA3: "Hayı
+                faqA3: "Hayır, tüm gönderimler resmi ve güvenli kanallarla yapıldığı için hiçbir ban riski yoktur.",
+                liveOrder: "Canlı Sipariş",
+                orderSuffix: "satın aldı! 🎉",
+                verifiedSuccess: "Doğrulandı! ✅"
+            }
+        };
+
+        // Paketleri döküp bermek (Bütin we arassa görnüş)
+        window.renderPackages = function() {
+            const grid = document.getElementById('ucGrid');
+            if(!grid) return;
+            grid.innerHTML = '';
+
+            ucPackages.forEach((pkg, index) => {
+                const bonusText = pkg.bonus > 0 ? `+${pkg.bonus}` : '';
+                const card = document.createElement('div');
+                card.className = `relative bg-gray-900/60 border ${pkg.popular ? 'border-yellow-500/50' : 'border-gray-800'} rounded-2xl p-5 flex flex-col justify-between items-center text-center cursor-pointer transfo
