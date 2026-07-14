@@ -103,13 +103,13 @@
                 <span id="txtStep2">UC Paketini Saýlaň</span>
             </h2>
 
-            <!-- Grid (Ähli 13 sany paket bärde dökülýär) -->
+            <!-- Grid -->
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6" id="ucGrid">
                 <!-- JavaScript tarapyndan dökülýär -->
             </div>
         </section>
 
-        <!-- Köp Soralýan Soraglar (FAQ Accordion) -->
+        <!-- Köp Soralýan Soraglar -->
         <section class="mb-10 bg-gray-900/30 border border-gray-800 rounded-2xl p-6">
             <h2 class="text-xl md:text-2xl font-bold mb-6 gaming-font text-yellow-400" id="faqTitle">Köp Soralýan Soraglar</h2>
             <div class="space-y-4">
@@ -151,7 +151,6 @@
     <!-- Footer -->
     <footer class="bg-gray-950 border-t border-gray-800 py-10">
         <div class="max-w-6xl mx-auto px-4 text-center">
-            
             <!-- Sosial Ulgamlar -->
             <div class="flex justify-center space-x-6 mb-6">
                 <a href="#" target="_blank" class="w-12 h-12 bg-gray-900 border border-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-yellow-500 hover:border-yellow-500/50 transition duration-300">
@@ -165,7 +164,7 @@
                 </a>
             </div>
 
-            <!-- Gorag we Kepillik nyşanlary -->
+            <!-- Kepillikler -->
             <div class="flex flex-wrap justify-center items-center gap-6 mb-6 text-xs text-gray-500">
                 <span class="flex items-center" id="txtSecPay"><i class="fa-solid fa-shield-halved text-green-500 mr-1.5 text-sm"></i> 100% Ygtybarly töleg</span>
                 <span class="flex items-center" id="txtFastDel"><i class="fa-solid fa-bolt text-yellow-500 mr-1.5 text-sm"></i> Dessine ugradylşyk</span>
@@ -217,7 +216,7 @@
         </div>
     </div>
 
-    <!-- Ýörite duýduryş gutyjygy (Error Modal) -->
+    <!-- Ýörite duýduryş (Error Modal) -->
     <div id="errorModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
         <div class="bg-gray-900 border border-red-500/50 w-full max-w-sm rounded-2xl overflow-hidden p-6 text-center">
             <div class="w-14 h-14 bg-red-500/10 text-red-500 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
@@ -225,13 +224,13 @@
             </div>
             <h3 class="text-lg font-bold gaming-font text-white mb-1" id="errTitle">Üns Beriň!</h3>
             <p class="text-gray-400 text-sm mb-6" id="errorMessage">Sargyt etmek üçin ilki bilen Player ID girizmeli!</p>
-            <button id="closeErrorModalBtn" class="w-full py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition-all" id="errClose">
+            <button id="closeErrorModalBtn" class="w-full py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition-all">
                 Ýap
             </button>
         </div>
     </div>
 
-    <!-- Janly sargytlar bildirişi (Live Orders Toast) -->
+    <!-- Janly sargytlar bildirişi -->
     <div id="liveOrderToast" class="fixed bottom-6 left-6 z-50 max-w-sm bg-gray-950/90 border border-yellow-500/30 rounded-2xl p-4 flex items-center space-x-3 shadow-2xl transition-all duration-500 transform translate-y-20 opacity-0">
         <div class="w-10 h-10 bg-yellow-500/20 text-yellow-400 rounded-full flex items-center justify-center text-lg">
             <i class="fa-solid fa-fire animate-pulse"></i>
@@ -242,12 +241,12 @@
         </div>
     </div>
 
-    <!-- JavaScript programmirleme logikasy -->
+    <!-- JavaScript programmirleme logikasy (100% GARANTIÝALY IŞJEŇLIK) -->
     <script>
-        // Ählisini diňe saýt doly ýüklenenden soň işledýäris
-        document.addEventListener("DOMContentLoaded", function() {
+        // BÜTIN PROGRAMMANYŇ ESASY FUNKSIÝASY
+        function startApp() {
             
-            // ÄHLI 13 PAKET
+            // 13 SANY PAKET
             const ucPackages = [
                 { uc: 30, bonus: 0, price: 30.99, popular: false },
                 { uc: 60, bonus: 0, price: 51.99, popular: true },
@@ -331,4 +330,5 @@
                     faqTitle: "Sıkça Sorulan Sorular",
                     faqQ1: "UC ne kadar sürede yüklenir?",
                     faqA1: "Ödeme onaylandıktan sonra 5-15 dakika içerisinde UC hesabınıza yüklenir.",
-                    
+                    faqQ2: "Ödeme nasıl yapılıyor?",
+                    faqA2: "WhatsApp üzerinden operatörümüzle görüşerek Türkiye banka kartları 
