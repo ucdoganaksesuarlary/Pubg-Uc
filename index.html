@@ -1,1 +1,334 @@
+<!DOCTYPE html>
+<html lang="tk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Üç Dogan - PUBG Mobile UC Store</title>
+    <!-- Tailwind CSS & Google Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght=500;600;700&family=Roboto:wght=400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #0b0e14;
+        }
+        .gaming-font {
+            font-family: 'Rajdhani', sans-serif;
+        }
+        .uc-glow {
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.1);
+            transition: 0.3s;
+        }
+        .uc-glow:hover {
+            box-shadow: 0 0 25px rgba(234, 179, 8, 0.35);
+        }
+        /* Custom Accordion Transition */
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .faq-active .faq-content {
+            max-height: 200px;
+        }
+        .faq-active i {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="text-gray-100 min-h-screen flex flex-col justify-between selection:bg-yellow-500 selection:text-black">
 
+    <!-- Header -->
+    <header class="border-b border-gray-800 bg-gray-950/80 backdrop-blur sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="text-xl md:text-3xl font-extrabold tracking-wider gaming-font text-yellow-500">
+                    <i class="fa-solid fa-gamepad mr-2 text-yellow-400"></i>ÜÇ DOGAN <span class="text-white">STORE</span>
+                </span>
+            </div>
+            
+            <div class="flex items-center space-x-3">
+                <!-- Hamanchik Hyzmatdaşy -->
+                <div class="hidden sm:flex items-center space-x-2 bg-yellow-500/10 border border-yellow-500/20 px-3 py-1.5 rounded-full text-xs font-semibold text-yellow-500">
+                    <span class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse mr-1"></span> 
+                    <span id="partnerText">Hamanchik Hyzmatdaşy</span>
+                </div>
+                
+                <!-- Dil Saýlama Düwmesi -->
+                <button id="langToggleBtn" class="flex items-center space-x-1.5 bg-gray-900 border border-gray-800 hover:border-yellow-500/50 px-3 py-1.5 rounded-xl text-xs font-bold transition-all">
+                    <i class="fa-solid fa-globe text-yellow-500"></i>
+                    <span id="langBtn">TR</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Esasy Bölüm -->
+    <main class="max-w-6xl mx-auto px-4 py-8 w-full flex-grow">
+        
+        <!-- Player ID Girizmek we Barlamak -->
+        <section class="mb-10 bg-gray-900/50 border border-gray-800 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
+            <h2 class="text-xl md:text-2xl font-bold mb-4 gaming-font text-yellow-400 flex items-center">
+                <span class="bg-yellow-500 text-black px-2.5 py-0.5 rounded-md mr-3 text-sm">1</span> 
+                <span id="txtStep1">PUBG Player ID Giriziň</span>
+            </h2>
+            <div class="max-w-md">
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <div class="relative flex-grow">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
+                            <i class="fa-solid fa-user-astronaut text-lg"></i>
+                        </span>
+                        <input type="text" id="playerId" placeholder="Mysaly: 512345678" 
+                            class="w-full pl-10 pr-4 py-3 bg-black/40 border border-gray-700 rounded-xl focus:border-yellow-500 focus:outline-none focus:ring-1 focus:ring-yellow-500 text-white tracking-widest placeholder-gray-500 transition-all">
+                    </div>
+                    <!-- ID Barla düwmesi -->
+                    <button id="verifyBtn" class="px-6 py-3 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-xl transition-all flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span id="btnVerifyText">ID Barla</span>
+                    </button>
+                </div>
+                <!-- Barlag netijesi -->
+                <div id="verifyStatus" class="mt-2.5 text-xs font-semibold hidden"></div>
+                <p class="text-xs text-gray-500 mt-2.5" id="txtIdDesc">Hasabyňyza UC ugradylmagy üçin ID belgiňizi dogry girizendigiňizden ynamly boluň.</p>
+            </div>
+        </section>
+
+        <!-- UC Paketleri -->
+        <section class="mb-10">
+            <h2 class="text-xl md:text-2xl font-bold mb-6 gaming-font text-yellow-400 flex items-center">
+                <span class="bg-yellow-500 text-black px-2.5 py-0.5 rounded-md mr-3 text-sm">2</span> 
+                <span id="txtStep2">UC Paketini Saýlaň</span>
+            </h2>
+
+            <!-- Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6" id="ucGrid">
+                <!-- JavaScript tarapyndan dökülýär -->
+            </div>
+        </section>
+
+        <!-- Köp Soralýan Soraglar -->
+        <section class="mb-10 bg-gray-900/30 border border-gray-800 rounded-2xl p-6">
+            <h2 class="text-xl md:text-2xl font-bold mb-6 gaming-font text-yellow-400" id="faqTitle">Köp Soralýan Soraglar</h2>
+            <div class="space-y-4">
+                <!-- Sorag 1 -->
+                <div class="faq-item border border-gray-800 rounded-xl bg-gray-900/50 transition-all cursor-pointer">
+                    <div class="p-4 flex justify-between items-center">
+                        <span class="font-bold text-sm md:text-base text-white" id="faqQ1">UC näçe wagtda hasaba gelýär?</span>
+                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p class="p-4 pt-0 text-sm text-gray-400 border-t border-gray-800/50" id="faqA1">Töleg amala aşyrylandan soň 5-15 minudyň içinde UC hasabyňyza geçirilýär.</p>
+                    </div>
+                </div>
+                <!-- Sorag 2 -->
+                <div class="faq-item border border-gray-800 rounded-xl bg-gray-900/50 transition-all cursor-pointer">
+                    <div class="p-4 flex justify-between items-center">
+                        <span class="font-bold text-sm md:text-base text-white" id="faqQ2">Töleg nähili kabul edilýär?</span>
+                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p class="p-4 pt-0 text-sm text-gray-400 border-t border-gray-800/50" id="faqA2">WhatsApp arkaly operatorymyz bilen habarlaşyp, Türkiýe we beýleki bank kartlary arkaly töleg edip bilersiňiz.</p>
+                    </div>
+                </div>
+                <!-- Sorag 3 -->
+                <div class="faq-item border border-gray-800 rounded-xl bg-gray-900/50 transition-all cursor-pointer">
+                    <div class="p-4 flex justify-between items-center">
+                        <span class="font-bold text-sm md:text-base text-white" id="faqQ3">Hasabymyň ban edilme howpy barmy?</span>
+                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p class="p-4 pt-0 text-sm text-gray-400 border-t border-gray-800/50" id="faqA3">Ýok, ähli ugradylşyklar resmi we ygtybarly ýollar arkaly amala aşyrylýar. Hiç hili ban howpy ýokdur.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 border-t border-gray-800 py-10">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <!-- Sosial Ulgamlar -->
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="#" target="_blank" class="w-12 h-12 bg-gray-900 border border-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-yellow-500 hover:border-yellow-500/50 transition duration-300">
+                    <i class="fa-brands fa-tiktok text-xl"></i>
+                </a>
+                <a href="#" target="_blank" class="w-12 h-12 bg-gray-900 border border-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-yellow-500 hover:border-yellow-500/50 transition duration-300">
+                    <i class="fa-brands fa-instagram text-xl"></i>
+                </a>
+                <a href="#" target="_blank" class="w-12 h-12 bg-gray-900 border border-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-yellow-500 hover:border-yellow-500/50 transition duration-300">
+                    <i class="fa-brands fa-telegram text-xl"></i>
+                </a>
+            </div>
+
+            <!-- Kepillikler -->
+            <div class="flex flex-wrap justify-center items-center gap-6 mb-6 text-xs text-gray-500">
+                <span class="flex items-center" id="txtSecPay"><i class="fa-solid fa-shield-halved text-green-500 mr-1.5 text-sm"></i> 100% Ygtybarly töleg</span>
+                <span class="flex items-center" id="txtFastDel"><i class="fa-solid fa-bolt text-yellow-500 mr-1.5 text-sm"></i> Dessine ugradylşyk</span>
+                <span class="flex items-center" id="txtSupport"><i class="fa-solid fa-headset text-blue-500 mr-1.5 text-sm"></i> 24/7 Goldaw</span>
+            </div>
+
+            <hr class="border-gray-900 my-6 max-w-md mx-auto">
+
+            <p class="text-xs text-gray-600 uppercase tracking-widest gaming-font" id="txtRights">© 2026 ÜÇ DOGAN STORE - ÄHLI HUKUKLAR GORALAN</p>
+            <p class="text-[10px] text-gray-700 mt-2" id="txtSubDesc">Bu saýt Hamanchik hyzmatdaşlygynda işleýän garaşsyz we howpsuz UC satuw platformasydyr.</p>
+        </div>
+    </footer>
+
+    <!-- Satyn Almak Modaly -->
+    <div id="paymentModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-gray-900 border border-gray-800 w-full max-w-md rounded-2xl overflow-hidden">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-bold gaming-font text-yellow-400" id="modalTitle">Sargyt Maglumaty</h3>
+                    <button id="closeModalBtn" class="text-gray-400 hover:text-white transition-all text-2xl">&times;</button>
+                </div>
+                <hr class="border-gray-800 mb-4">
+                
+                <div class="space-y-3 mb-6">
+                    <div class="flex justify-between">
+                        <span class="text-gray-400">Player ID:</span>
+                        <span id="modalPlayerId" class="font-mono text-yellow-500 font-bold"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-400" id="lblSelectedPkg">Saýlanan Paket:</span>
+                        <span id="modalUcAmount" class="font-bold text-white"></span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400" id="lblTotalPay">Jemi Töleg:</span>
+                        <span id="modalPrice" class="text-xl font-bold text-yellow-400"></span>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-500/10 border border-yellow-500/20 p-3 rounded-xl text-xs text-yellow-500/90 mb-6 flex items-start space-x-2">
+                    <i class="fa-solid fa-circle-info mt-0.5"></i>
+                    <span id="lblModalInfo">Töleg amala aşyrmak we tassyklatmak üçin häzir operatorymyza ugrukdyrylarsyňyz.</span>
+                </div>
+
+                <button id="whatsappPayBtn" class="w-full py-3 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl flex items-center justify-center space-x-2 transition-all shadow-lg shadow-green-900/20">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span id="btnPayText">WhatsApp arkaly Töle</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ýörite duýduryş (Error Modal) -->
+    <div id="errorModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-gray-900 border border-red-500/50 w-full max-w-sm rounded-2xl overflow-hidden p-6 text-center">
+            <div class="w-14 h-14 bg-red-500/10 text-red-500 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                <i class="fa-solid fa-circle-exclamation"></i>
+            </div>
+            <h3 class="text-lg font-bold gaming-font text-white mb-1" id="errTitle">Üns Beriň!</h3>
+            <p class="text-gray-400 text-sm mb-6" id="errorMessage">Sargyt etmek üçin ilki bilen Player ID girizmeli!</p>
+            <button id="closeErrorModalBtn" class="w-full py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition-all">
+                Ýap
+            </button>
+        </div>
+    </div>
+
+    <!-- Janly sargytlar bildirişi -->
+    <div id="liveOrderToast" class="fixed bottom-6 left-6 z-50 max-w-sm bg-gray-950/90 border border-yellow-500/30 rounded-2xl p-4 flex items-center space-x-3 shadow-2xl transition-all duration-500 transform translate-y-20 opacity-0">
+        <div class="w-10 h-10 bg-yellow-500/20 text-yellow-400 rounded-full flex items-center justify-center text-lg">
+            <i class="fa-solid fa-fire animate-pulse"></i>
+        </div>
+        <div>
+            <div class="text-xs text-gray-500 font-semibold uppercase tracking-wider" id="txtLiveOrder">Janly Sargyt</div>
+            <div class="text-xs md:text-sm text-gray-200 font-bold" id="liveOrderText">G***m 300+25 UC satyn aldy! 🎉</div>
+        </div>
+    </div>
+
+    <!-- JavaScript programmirleme logikasy (100% GARANTIÝALY IŞJEŇLIK) -->
+    <script>
+        // BÜTIN PROGRAMMANYŇ ESASY FUNKSIÝASY
+        function startApp() {
+            
+            // 13 SANY PAKET
+            const ucPackages = [
+                { uc: 30, bonus: 0, price: 30.99, popular: false },
+                { uc: 60, bonus: 0, price: 51.99, popular: true },
+                { uc: 300, bonus: 25, price: 219.99, popular: false },
+                { uc: 600, bonus: 60, price: 429.99, popular: true },
+                { uc: 1500, bonus: 300, price: 1059.99, popular: false },
+                { uc: 3000, bonus: 850, price: 2109.99, popular: false },
+                { uc: 6000, bonus: 2100, price: 4209.99, popular: false },
+                { uc: 12000, bonus: 4200, price: 8409.99, popular: false },
+                { uc: 18000, bonus: 6300, price: 12609.99, popular: false },
+                { uc: 24000, bonus: 8400, price: 16809.99, popular: false },
+                { uc: 30000, bonus: 10500, price: 21009.99, popular: false },
+                { uc: 36000, bonus: 12600, price: 25209.99, popular: false },
+                { uc: 60000, bonus: 21000, price: 42009.99, popular: false }
+            ];
+
+            let selectedPackage = null;
+            let isIdVerified = false;
+            let currentLang = 'tm';
+
+            const translations = {
+                tm: {
+                    partner: "Hamanchik Hyzmatdaşy",
+                    txtStep1: "1 PUBG Player ID Giriziň",
+                    placeholder: "Mysaly: 512345678",
+                    txtIdDesc: "Hasabyňyza UC ugradylmagy üçin ID belgiňizi dogry girizendigiňizden ynamly boluň.",
+                    btnVerifyText: "ID Barla",
+                    btnChecking: "Barlanýar...",
+                    btnVerified: "Tassyklanyldy",
+                    txtStep2: "2 UC Paketini Saýlaň",
+                    popular: "Meşhur",
+                    txtSecPay: "100% Ygtybarly töleg",
+                    txtFastDel: "Dessine ugradylşyk",
+                    txtSupport: "24/7 Goldaw",
+                    txtRights: "© 2026 ÜÇ DOGAN STORE - ÄHLI HUKUKLAR GORALAN",
+                    txtSubDesc: "Bu saýt Hamanchik hyzmatdaşlygynda işleýän garaşsyz we howpsuz UC satuw platformasydyr.",
+                    modalTitle: "Sargyt Maglumaty",
+                    lblSelectedPkg: "Saýlanan Paket:",
+                    lblTotalPay: "Jemi Töleg:",
+                    lblModalInfo: "Töleg amala aşyrmak we tassyklatmak üçin häzir operatorymyza ugrukdyrylarsyňyz.",
+                    btnPayText: "WhatsApp arkaly Töle",
+                    errTitle: "Üns Beriň!",
+                    errClose: "Ýap",
+                    errNoId: "Sargyt etmek üçin ilki bilen Player ID girizmeli!",
+                    errNotVerified: "Sargyt etmezden öň girizilen ID belgiňizi 'ID Barla' düwmesi bilen tassyklamaly!",
+                    faqTitle: "Köp Soralýan Soraglar",
+                    faqQ1: "UC näçe wagtda hasaba gelýär?",
+                    faqA1: "Töleg amala aşyrylandan soň 5-15 minudyň içinde UC hasabyňyza geçirilýär.",
+                    faqQ2: "Töleg nähili kabul edilýär?",
+                    faqA2: "WhatsApp arkaly operatorymyz bilen habarlaşyp, Türkiýe we beýleki bank kartlary arkaly töleg edip bilersiňiz.",
+                    faqQ3: "Hasabymyň ban edilme howpy barmy?",
+                    faqA3: "Ýok, ähli ugradylşyklar resmi we ygtybarly ýollar arkaly amala aşyrylýar. Hiç hili ban howpy ýokdur.",
+                    liveOrder: "Janly sargyt",
+                    orderSuffix: "satyn aldy! 🎉",
+                    verifiedSuccess: "Tassyklandy! ✅"
+                },
+                tr: {
+                    partner: "Hamanchik Ortağı",
+                    txtStep1: "1 PUBG Oyuncu ID Girin",
+                    placeholder: "Örnek: 512345678",
+                    txtIdDesc: "Hesabınıza UC gönderilebilmesi için ID numaranızı doğru girdiğinizden emin olun.",
+                    btnVerifyText: "ID Sorgula",
+                    btnChecking: "Sorgulanıyor...",
+                    btnVerified: "Doğrulandı",
+                    txtStep2: "2 UC Paketi Seçin",
+                    popular: "Popüler",
+                    txtSecPay: "%100 Güvenli Ödeme",
+                    txtFastDel: "Anında Teslimat",
+                    txtSupport: "24/7 Destek",
+                    txtRights: "© 2026 ÜÇ DOGAN STORE - TÜM HAKLARI SAKLIDIR",
+                    txtSubDesc: "Bu site Hamanchik ortaklığında çalışan bağımsız ve güvenli bir UC satış platformudur.",
+                    modalTitle: "Sipariş Bilgileri",
+                    lblSelectedPkg: "Seçilen Paket:",
+                    lblTotalPay: "Toplam Ödeme:",
+                    lblModalInfo: "Ödeme yapmak ve onaylatmak için şimdi operatörümüze yönlendirileceksiniz.",
+                    btnPayText: "WhatsApp ile Öde",
+                    errTitle: "Dikkat!",
+                    errClose: "Kapat",
+                    errNoId: "Sipariş vermek için önce Oyuncu ID girmelisiniz!",
+                    errNotVerified: "Sipariş vermeden önce girilen ID numaranızı 'ID Sorgula' butonu ile doğrulamalısınız!",
+                    faqTitle: "Sıkça Sorulan Sorular",
+                    faqQ1: "UC ne kadar sürede yüklenir?",
+                    faqA1: "Ödeme onaylandıktan sonra 5-15 dakika içerisinde UC hesabınıza yüklenir.",
+                    faqQ2: "Ödeme nasıl yapılıyor?",
+                    faqA2: "WhatsApp üzerinden operatörümüzle görüşerek Türkiye banka kartları 
