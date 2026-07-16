@@ -6,6 +6,9 @@
     <title>Üç Dogan Store</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .uc-glow:hover { box-shadow: 0 0 15px rgba(234, 179, 8, 0.3); }
+    </style>
 </head>
 <body class="bg-[#0b0e14] text-gray-100 min-h-screen flex flex-col justify-between selection:bg-yellow-500 selection:text-black">
 
@@ -50,10 +53,30 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-950 border-t border-gray-800 py-6 text-center text-xs text-gray-500">
-        <p>© 2026 ÜÇ DOGAN STORE - ÄHLI HUKUKLAR GORALAN</p>
+    <!-- Footer (Baýlaşdyrylan Bölüm) -->
+    <footer class="bg-gray-950 border-t border-gray-800 py-8 mt-10">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <!-- Security & Speed Badge -->
+            <div class="flex flex-wrap justify-center items-center gap-6 mb-6 text-xs text-gray-400">
+                <span class="flex items-center"><i class="fa-solid fa-shield-halved text-green-500 mr-1.5 text-sm"></i> 100% Ygtybarly we Goralan Töleg</span>
+                <span class="flex items-center"><i class="fa-solid fa-bolt text-yellow-500 mr-1.5 text-sm"></i> Dessine we Tiz Ugradylşyk</span>
+            </div>
+            <hr class="border-gray-900 my-4 max-w-sm mx-auto">
+            <p class="text-xs text-gray-500 font-semibold tracking-wider">© 2026 ÜÇ DOGAN STORE - ÄHLI HUKUKLAR GORALAN</p>
+            <p class="text-[10px] text-gray-600 mt-1">Midasbuy we PUBG Mobile bilen resmi hyzmatdaşlykda işlenilýär.</p>
+        </div>
     </footer>
+
+    <!-- HUSUSY BILDIRIŞ MODALY (GitHub Linkini Gizleýän Ýer) -->
+    <div id="alertModal" class="fixed inset-0 flex items-center justify-center bg-black/80 hidden z-50 p-4 backdrop-blur-sm">
+        <div class="bg-gray-900 border border-yellow-500/30 rounded-2xl p-6 max-w-sm w-full text-center shadow-2xl shadow-yellow-500/5 animate-fade-in">
+            <div class="w-12 h-12 bg-yellow-500/10 text-yellow-500 rounded-full flex items-center justify-center text-xl mx-auto mb-4">
+                <i class="fa-solid fa-circle-exclamation"></i>
+            </div>
+            <p id="alertMessage" class="text-white text-sm mb-6 font-semibold leading-relaxed"></p>
+            <button id="closeAlertBtn" class="w-full py-2.5 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-xl transition">OK</button>
+        </div>
+    </div>
 
     <!-- JS Code -->
     <script>
@@ -70,10 +93,20 @@
         let isIdVerified = false;
         const grid = document.getElementById('ucGrid');
 
+        // Custom Alert Function
+        function myAlert(msg) {
+            document.getElementById('alertMessage').innerText = msg;
+            document.getElementById('alertModal').classList.remove('hidden');
+        }
+
+        document.getElementById('closeAlertBtn').onclick = () => {
+            document.getElementById('alertModal').classList.add('hidden');
+        };
+
         // Verify ID
         document.getElementById('verifyBtn').onclick = () => {
             const idInput = document.getElementById('playerId').value.trim();
-            if (!idInput) return alert("Sargyt etmek üçin ilki bilen Player ID girizmeli!");
+            if (!idInput) return myAlert("Sargyt etmek üçin ilki bilen Player ID girizmeli!");
             
             isIdVerified = true;
             const statusDiv = document.getElementById('verifyStatus');
@@ -85,7 +118,7 @@
         ucPackages.forEach(pkg => {
             const bonus = pkg.bonus ? `+${pkg.bonus}` : '';
             const card = document.createElement('div');
-            card.className = "bg-gray-900/60 border border-gray-800 rounded-2xl p-4 flex flex-col justify-between items-center text-center cursor-pointer hover:border-yellow-500/50 transition-all";
+            card.className = "bg-gray-900/60 border border-gray-800 rounded-2xl p-4 flex flex-col justify-between items-center text-center cursor-pointer hover:border-yellow-500/50 transition-all uc-glow";
             card.innerHTML = `
                 <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center text-black font-extrabold text-lg shadow-lg shadow-yellow-500/10 mb-2">UC</div>
                 <div class="text-base font-bold text-white">${pkg.uc} <span class="text-yellow-400">${bonus}</span></div>
@@ -94,8 +127,8 @@
             
             card.onclick = () => {
                 const idInput = document.getElementById('playerId').value.trim();
-                if (!idInput) return alert("Sargyt etmek üçin ilki bilen Player ID girizmeli!");
-                if (!isIdVerified) return alert("Sargyt etmezden öň girizilen ID belgiňizi 'ID Barla' düwmesi bilen tassyklamaly!");
+                if (!idInput) return myAlert("Sargyt etmek üçin ilki bilen Player ID girizmeli!");
+                if (!isIdVerified) return myAlert("Sargyt etmezden öň girizilen ID belgiňizi 'ID Barla' düwmesi bilen tassyklamaly!");
 
                 const text = `Salam Hamanchik Hyzmatdaşy, men PUBG UC satyn almak isleýän!\n\n` + 
                              `👤 Player ID: ${idInput}\n` + 
